@@ -10,7 +10,7 @@ pipeline {
 					npm install
 					echo "=================Finish First step=================="
 					sleep 2
-					npm run-script build
+					CI=false npm run build
 					echo "=================Finish Package step=================="
 					ls -la
 					
