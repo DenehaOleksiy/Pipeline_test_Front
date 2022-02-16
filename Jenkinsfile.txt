@@ -1,0 +1,29 @@
+pipeline {
+    agent none
+	
+    stages {
+        stage('Build') {
+            agent { label 'front_builder' }
+            steps {
+                sh '''
+					echo "=================Start First step=================="
+					npm install
+					echo "=================Finish First step=================="
+					sleep 2
+					npm run-script build
+					echo "=================Finish Package step=================="
+					ls -la
+					
+					
+					
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'This will run only if successful'
+        }
+    }
+}
